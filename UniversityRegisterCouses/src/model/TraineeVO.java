@@ -59,6 +59,12 @@ public class TraineeVO {
 	public void setT_date(String t_date) {
 		this.t_date = t_date;
 	}
+
+	@Override
+	public String toString() {
+		return "no : " + no + ", sd_num : " + sd_num + ", l_abbre : " + l_abbre + ", t_section : " + t_section
+				+ ", t_date : " + t_date + "\n";
+	}
 	
 	
 }

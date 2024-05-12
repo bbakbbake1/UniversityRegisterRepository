@@ -48,20 +48,77 @@ public class SubjectDAO {
 
   // 학과 수정
   public void setSubjectUpdate(SubjectVO svo) {
-    String sql = "UPDATE subject SET S_NUM = ?, S_NAME = ? WHERE NO = ?";
-    try (Connection con = DBUtill.makeConnection()) {
-      PreparedStatement pstmt = con.prepareStatement(sql);
+    String sql = "update subject set s_num = ?, s_name = ? where no = ?";
+    Connection con = null;
+    PreparedStatement pstmt = null;
+
+    try {
+    con = DBUtill.makeConnection();
+      pstmt = con.prepareStatement(sql);
       pstmt.setString(1, svo.getS_num());
       pstmt.setString(2, svo.getS_name());
       pstmt.setInt(3, svo.getNo());
-      int value = pstmt.executeUpdate();
-      if (value == 1) {
-        System.out.println(svo.getS_name() + "학과수정 성공");
-      } else {
-        System.out.println(svo.getS_name() + "학과수정 실패");
+
+      int i = pstmt.executeUpdate();
+      if(i == 1){
+        System.out.println(svo.getS_name() + " 학과 수정 완료.");
+        System.out.println(" 학과 수정 성공!!");
+      }else{
+        System.out.println("학과 수정 실패!!");
       }
     } catch (SQLException e) {
       e.printStackTrace();
     }
+    finally{
+      try {
+        //데이터베이스와의 연결에 사용되었던 오브젝트를 해제
+      if(pstmt != null){
+          pstmt.close();
+        }
+        if(con != null){
+          con.close();
+        }
+      } catch (SQLException e) {
+        e.printStackTrace();
+      }
+    }
   }
+  //학과 삭제
+  public void setSubjectDelete(int no){
+    StringBuffer sql = new StringBuffer();
+    sql.append("delete from subject where no = ?");
+
+    Connection con = null;
+    PreparedStatement pstmt = null;
+
+    try {
+      con = DBUtill.makeConnection();
+      pstmt = con.prepareStatement(sql.toString());
+      pstmt.setInt(1, no);
+
+      int i = pstmt.executeUpdate();
+
+      if(i == 1){
+        System.out.println("학과 삭제 완료.");
+        System.out.println("학과 삭제 성공!!");
+      }else{
+        System.out.println("학과 삭제 실패!!");
+      }
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }finally{
+      try {
+        //데이터베이스와의 연결에 사용되었던 오브젝트를 해제
+      if(pstmt != null){
+          pstmt.close();
+        }
+      if(con != null){
+        con.close();
+      }
+      } catch (SQLException e) {
+        e.printStackTrace();
+      }
+    }
+  }
+
 }

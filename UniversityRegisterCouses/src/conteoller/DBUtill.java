@@ -10,7 +10,7 @@ import java.util.Properties;
 
 public class DBUtill {
   public static Connection makeConnection() {
-    String filePath = "D:/vscode/UniversityRegisterCouses/src/db.properties";
+    String filePath = "src/db.properties";
     Connection con = null;
     try {
       Properties properties = new Properties();

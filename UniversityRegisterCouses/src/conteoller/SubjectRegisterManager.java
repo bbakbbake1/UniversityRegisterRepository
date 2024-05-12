@@ -47,7 +47,25 @@ public class SubjectRegisterManager {
 		String s_name = input.nextLine();
 
 		SubjectVO svo = new SubjectVO(no, s_num, s_name);
-		sd.setSubjectRegister(svo);
+		sd.setSubjectUpdate(svo);
 	}
 	// 학과 삭제 관리
+	public void subjectDelete(){
+		Scanner input = new Scanner(System.in);
+
+		SubjectDAO sd = new SubjectDAO();
+		
+		
+		
+		System.out.println("학과정보 리스트");
+		sd.getSubjectTotalList();
+		
+		System.out.println("삭제할 학과 일련번호 입력");
+		System.out.println("일련번호 >>");
+		int no = input.nextInt();
+		
+		SubjectVO svo = new SubjectVO(no);
+
+		sd.setSubjectDelete(no);
+	}
 }

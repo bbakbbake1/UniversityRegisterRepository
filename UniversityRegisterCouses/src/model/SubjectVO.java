@@ -21,6 +21,11 @@ public class SubjectVO {
 		this.s_num = s_num;
 		this.s_name = s_name;
 	}
+	public SubjectVO(int no) {
+		super();
+		this.no = no;
+		
+	}
 
 	public int getNo() {
 		return no;

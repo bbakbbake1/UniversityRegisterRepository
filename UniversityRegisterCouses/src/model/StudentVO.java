@@ -121,5 +121,12 @@ public class StudentVO {
 		this.sd_date = sd_date;
 	}
 
+	@Override
+	public String toString() {
+		return "no : " + no + ", sd_num : " + sd_num + ", sd_name : " + sd_name + ", sd_id : " + sd_id + ", sd_passwd : "
+				+ sd_passwd + ", s_num : " + s_num + ", sd_birthday : " + sd_birthday + ", sd_phone : " + sd_phone + ", sd_address : "
+				+ sd_address + ", sd_email : " + sd_email + ", sd_date : " + sd_date + "\n";
+	}
+
 	
 }

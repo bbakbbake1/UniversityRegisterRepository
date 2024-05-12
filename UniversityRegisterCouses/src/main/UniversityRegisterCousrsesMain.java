@@ -102,7 +102,7 @@ public class UniversityRegisterCousrsesMain {
 				subjectManager.subjectUpdate();
 				break;
 			case SUBJECT_CHOICE.DELETE:
-				subjectManager.subjectList();
+				subjectManager.subjectDelete();
 				break;
 			case SUBJECT_CHOICE.MAIN:
 				return;
